@@ -1,10 +1,22 @@
-use engine;
+use engine::logger;
+use engine::application::Application;
 
 fn main() {
-    engine::logger::trace("trace");
-    engine::logger::debug("debug");
-    engine::logger::info("info");
-    engine::logger::warn("warn");
-    engine::logger::error("error");
-    engine::logger::fatal("fatal");
+    Application::new()
+        .initializer(&initialize)
+        .updater(&update)
+        .terminator(&terminator)
+        .run();
+}
+
+fn initialize() {
+    logger::debug("Initializing");
+}
+
+fn terminator() {
+    logger::debug("terminator()");
+}
+
+fn update() {
+    logger::debug("update()");
 }

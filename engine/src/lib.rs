@@ -1,5 +1,7 @@
+
 mod platform;
 
+pub mod application;
 pub mod time;
 pub mod logger;
 
