@@ -1,23 +1,15 @@
+use crate::time::DateTime;
 use std::mem::MaybeUninit;
+
+#[cfg(target_os = "windows")]
 use windows_sys::Win32::Foundation::SYSTEMTIME;
+#[cfg(target_os = "windows")]
 use windows_sys::Win32::System::SystemInformation::GetLocalTime;
 
-#[derive(Copy, Clone, Debug)]
-pub struct DateTime {
-    pub year: u16,
-    pub month: u8,
-    pub day: u8,
-    pub hour: u8,
-    pub minute: u8,
-    pub second: u8,
-    pub millis: u16
-}
-
-pub fn now() -> DateTime { DateTime::now() }
 impl DateTime {
 
     #[cfg(target_os = "windows")]
-    fn now() -> Self {
+    pub fn now() -> Self {
         let mut now = MaybeUninit::<SYSTEMTIME>::uninit();
         unsafe { GetLocalTime(now.as_mut_ptr()) }
         let st = unsafe { now.assume_init() };

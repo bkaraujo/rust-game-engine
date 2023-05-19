@@ -1,4 +1,6 @@
-pub mod platform;
+mod platform;
+
+pub mod time;
 pub mod logger;
 
 pub fn add(left: usize, right: usize) -> usize {
