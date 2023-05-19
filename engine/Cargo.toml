@@ -6,3 +6,12 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+
+[dependencies.windows-sys]
+version = "0.48"
+features = [
+    "Win32_Foundation",
+    "Win32_System_Time",
+    "Win32_System_SystemInformation",
+    "Win32_UI_WindowsAndMessaging",
+]
