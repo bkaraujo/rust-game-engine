@@ -5,16 +5,16 @@ fn main() {
     Application::new()
         .initializer(&initialize)
         .updater(&update)
-        .terminator(&terminator)
+        .terminator(&terminate)
         .run();
 }
 
 fn initialize() {
-    logger::debug("Initializing");
+    logger::debug("initialize()");
 }
 
-fn terminator() {
-    logger::debug("terminator()");
+fn terminate() {
+    logger::debug("terminate()");
 }
 
 fn update() {
